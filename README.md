@@ -4,7 +4,9 @@
 
 ## Integrantes del equipo
 
-[Nombres, apellidos, y usuario GitHub de los integrantes del equipo.]
+- Diego Fernandes Alves (55229) (d.falves@alumnos.upm.es).
+- Dioni Rumanoide Caballero (14) (halamadrid@alumnos.upm.es).
+- Moro 453 (091101) (coucous@alumnos.upm.es).
 
 ## Objetivos del trabajo
 
