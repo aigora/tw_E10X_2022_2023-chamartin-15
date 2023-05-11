@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include "Funciones.h"
+#include "Funciones.c"
 
 
 
@@ -9,10 +10,10 @@ int main ()
 
     printf("#####BIENVENID@####\n\n");
     printf("Este programa consta de varias opciones de consulta\n");
-    printf("y estadísticas sobre datos extraídos de la página web\n");
+    printf("y estadisticas sobre datos extraidos de la pagina web\n");
     printf("de la Red Electrica Española (REE).\n\n");
     printf("¿Qué quiere realizar?\n\n");
-    printf("1 = Estadísica.\n");
+    printf("1 = Estadisica.\n");
     printf("2 = Extraer datos.\n");
     printf("3 = Consultar datos.\n");
     printf("4 = ...\n");

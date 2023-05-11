@@ -20,13 +20,68 @@ int elegir_fichero(void)
         printf("\n");
     }while((fichero!=1)&&(fichero!=2)&&(fichero!=3)&&(fichero!=4));
 
+    switch(fichero)
+    {
+    case '1':
+        P = fopen("generacion2122.csv","r");
+        if (P == NULL)
+            {
+                printf("Error al abrir el fichero.\n");
+                return -1;
+            }
+        else
+            {
+                printf("Fichero abierto correctamente.\n");
+                return 0;
+            }
+        break;
+    case '2':
+        P  = fopen("generacion2122.csv","r");
+        if (P == NULL)
+            {
+                printf("Error al abrir el fichero.\n");
+                return -1;
+            }
+        else
+            {
+                printf("Fichero abierto correctamente.\n");
+                return 0;
+            }
+        break;
+    case '3':
+        P = fopen("generacion2122.csv","r");
+        if (P == NULL)
+            {
+                printf("Error al abrir el fichero.\n");
+                return -1;
+            }
+        else
+            {
+                printf("Fichero abierto correctamente.\n");
+                return 0;
+            }
+        break;
+    case '4':
+        P = fopen("generacion2122.csv","r");
+        if (P == NULL)
+            {
+                printf("Error al abrir el fichero.\n");
+                return -1;
+            }
+        else
+            {
+                printf("Fichero abierto correctamente.\n");
+                return 0;
+            }
+        break;
+    }
+
     return fichero;
 }
 
 void estadistica(void)
 {
-    int
-    switch()
+    elegir_fichero();
 }
 void extraer_datos(void)
 {
