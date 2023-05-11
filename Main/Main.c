@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include "Funciones.h"
 
 
 
@@ -24,6 +25,19 @@ int main ()
         printf("\n");
 
     }while((respuesta!=1)&&(respuesta!=2)&&(respuesta!=3)&&(respuesta!=4));
+
+    switch(respuesta)
+    {
+    case '1':
+        estadistica();
+        break;
+    case '2':
+        extraer_datos();
+        break;
+    case '3':
+        consultar_datos();
+        break;
+    }
 
     return 0;
 }
