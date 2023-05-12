@@ -1,0 +1,20 @@
+Título,DEMANDA MÁXIMA HORARIA_01-01-2021_31-12-2022,,,,,
+Sistema eléctrico,Peninsular,,,,,
+Magnitudes,MWh,,,,,
+ ,,,,,,
+Fecha,17/12/2007,19/07/2010,08/01/2021,22/07/2021,20/01/2022,14/07/2022
+ ,2007,2010,2021,2021,2022,2022
+Fecha invierno (enero-mayo/octubre-diciembre),17/12/2007 - (19h-20h), ,08/01/2021 - (13h-14h), ,20/01/2022 - (20h-21h), 
+Fecha verano (junio-septiembre), ,19/07/2010 - (13h-14h), ,22/07/2021 - (14h-15h), ,14/07/2022 - (14h-15h)
+Invierno (enero-mayo/octubre-diciembre), , ,41483.001,37784.63,,
+Verano (junio-septiembre), , , ,36936.995,38048.355,
+Máximo histórico invierno,44876,,,,,
+Máximo histórico verano, ,40934,,,,
+ ,,,,,,
+Estados,,,,,,
+ ,Definitivo: 01/01/2021 - 30/06/2022,,,,,
+ ,Provisional: 01/07/2022 - 31/12/2022,,,,,
+ ,,,,,,
+Fecha exportación,12/05/2023 - 19:13:12,,,,,
+ ,,,,,,
+Fuente,www.ree.es,,,,,

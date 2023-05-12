@@ -1,8 +1,7 @@
 #include "Funciones.h"
 
-int elegir_fichero(void)
+int elegir_fichero(FILE *P)
 {
-    FILE *P;
     int fichero;
 
     printf("\n");
@@ -20,9 +19,9 @@ int elegir_fichero(void)
         printf("\n");
     }while((fichero!=1)&&(fichero!=2)&&(fichero!=3)&&(fichero!=4));
 
-    switch(fichero)
+
+    if(fichero==1)
     {
-    case '1':
         P = fopen("generacion2122.csv","r");
         if (P == NULL)
             {
@@ -34,21 +33,9 @@ int elegir_fichero(void)
                 printf("Fichero abierto correctamente.\n");
                 return 0;
             }
-        break;
-    case '2':
-        P  = fopen("generacion2122.csv","r");
-        if (P == NULL)
-            {
-                printf("Error al abrir el fichero.\n");
-                return -1;
-            }
-        else
-            {
-                printf("Fichero abierto correctamente.\n");
-                return 0;
-            }
-        break;
-    case '3':
+    }
+    if(fichero==2)
+    {
         P = fopen("generacion2122.csv","r");
         if (P == NULL)
             {
@@ -60,8 +47,9 @@ int elegir_fichero(void)
                 printf("Fichero abierto correctamente.\n");
                 return 0;
             }
-        break;
-    case '4':
+    }
+    if(fichero==3)
+    {
         P = fopen("generacion2122.csv","r");
         if (P == NULL)
             {
@@ -73,7 +61,20 @@ int elegir_fichero(void)
                 printf("Fichero abierto correctamente.\n");
                 return 0;
             }
-        break;
+    }
+    if(fichero==4)
+    {
+        P = fopen("generacion2122.csv","r");
+        if (P == NULL)
+            {
+                printf("Error al abrir el fichero.\n");
+                return -1;
+            }
+        else
+            {
+                printf("Fichero abierto correctamente.\n");
+                return 0;
+            }
     }
 
     return fichero;
@@ -81,7 +82,8 @@ int elegir_fichero(void)
 
 void estadistica(void)
 {
-    elegir_fichero();
+    FILE *P;
+    elegir_fichero(P);
 }
 void extraer_datos(void)
 {

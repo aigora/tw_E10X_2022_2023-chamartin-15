@@ -27,17 +27,24 @@ int main ()
 
     }while((respuesta!=1)&&(respuesta!=2)&&(respuesta!=3)&&(respuesta!=4));
 
-    switch(respuesta)
+    if(respuesta==1)
     {
-    case '1':
+        printf("Caso 1.");
         estadistica();
-        break;
-    case '2':
+    }
+    if(respuesta==2)
+    {
+        printf("Caso 2.");
         extraer_datos();
-        break;
-    case '3':
+    }
+    if(respuesta==3)
+    {
+        printf("Caso 3.");
         consultar_datos();
-        break;
+    }
+    if(respuesta==4)
+    {
+        printf("Caso 4.");
     }
 
     return 0;
