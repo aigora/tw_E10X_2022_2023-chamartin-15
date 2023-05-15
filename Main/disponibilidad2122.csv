@@ -1,15 +1,15 @@
-Título,ÍNDICE DE DISPONIBILIDAD DE LA RED DE TRANSPORTE_01-01-2021_31-12-2022,,,,,,,,,,,,,,,,,,,,,,,
-Sistema eléctrico,Nacional,,,,,,,,,,,,,,,,,,,,,,,
-Magnitudes,%,,,,,,,,,,,,,,,,,,,,,,,
+Título.ÍNDICE DE DISPONIBILIDAD DE LA RED DE TRANSPORTE,01-01-2021,31-12-2022,,,,,,,,,,,,,,,,,,,,,,,
+Sistema eléctrico.Nacional,,,,,,,,,,,,,,,,,,,,,,,
+Magnitudes.%,,,,,,,,,,,,,,,,,,,,,,,
  ,,,,,,,,,,,,,,,,,,,,,,,,
 Fecha,01/2021,02/2021,03/2021,04/2021,05/2021,06/2021,07/2021,08/2021,09/2021,10/2021,11/2021,12/2021,01/2022,02/2022,03/2022,04/2022,05/2022,06/2022,07/2022,08/2022,09/2022,10/2022,11/2022,12/2022
-Disponibilidad mensual total de la red de transporte,"99,46","98,67","98,56","98,63","98,21","98,22","98,98","98,89","97,84","98,39","97,61","98,58","99,31","98,96","98,66","98,21","97,75","97,64","97,99","98,01","97,78","97,25","97,42","99,03"
+"Disponibilidad mensual total de la red de transporte,99.46,98.67,98.56,98.63,98.21,98.22,98.98,98.89,97.84,98.39,97.61,98.58,99.31,98.96,98.66,98.21,97.75,97.64,97.99,98,01,97.78,97.25,97.42,99,03"""
  ,,,,,,,,,,,,,,,,,,,,,,,,
 Notas,,,,,,,,,,,,,,,,,,,,,,,,
- ,Datos acumulados a 31 de diciembre.,,,,,,,,,,,,,,,,,,,,,,,
- ,"Para el año en curso, los datos acumulados al último mes vencido.",,,,,,,,,,,,,,,,,,,,,,,
- ,Los indicadores de calidad de servicio de cada año se auditan en septiembre del año siguiente.,,,,,,,,,,,,,,,,,,,,,,,
+Datos acumulados a 31 de diciembre.,,,,,,,,,,,,,,,,,,,,,,,
+"Para el año en curso. los datos acumulados al último mes vencido."",,,,,,,,,,,,,,,,,,,,,,,"
+Los indicadores de calidad de servicio de cada año se auditan en septiembre del año siguiente.,,,,,,,,,,,,,,,,,,,,,,,
  ,,,,,,,,,,,,,,,,,,,,,,,,
 Fecha exportación,13/05/2023 - 12:05:56,,,,,,,,,,,,,,,,,,,,,,,
  ,,,,,,,,,,,,,,,,,,,,,,,,
-Fuente,www.ree.es,,,,,,,,,,,,,,,,,,,,,,,
+Fuente.www.ree.es,,,,,,,,,,,,,,,,,,,,,,,
