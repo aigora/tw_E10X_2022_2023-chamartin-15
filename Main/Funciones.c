@@ -2,40 +2,53 @@
 
 typedef struct
 {
-    int day;
     int month;
     int year;
 
 }FECHA;
 
+typedef struct
+{
+    char titulo[100];
+    char sistema[100];
+    char magnitudes[100];
+    char separador[100];
+}CABECERA;
 
+typedef struct
+{
+    char nombre[100];
+    FECHA fecha[23];
+    float magnitud[23];
+}DATO;
 
 typedef struct
 {
 
-    FECHA fechas[23];
-    float hidraulica[23];
-    float turbinacion[23];
-    float nuclear[23];
-    float carbon[23];
-    float fuel_gas[23];
-    float mot_diesel[23];
-    float turbina_gas[23];
-    float turbina_vapor[23];
-    float ciclo_combinado[23];
-    float hidroeolica[23];
-    float eolica[23];
-    float solar_fotovoltaica[23];
-    float solar_termica[23];
-    float otras_renovables[23];
-    float cogeneracion[23];
-    float residuos_no_renovables[23];
-    float residuos_renovables[23];
-    float generacion_total[23];
+    CABECERA principio;
+    DATO fechas;
+    DATO hidraulica;
+    DATO turbinacion;
+    DATO nuclear;
+    DATO carbon;
+    DATO fuel_gas;
+    DATO mot_diesel;
+    DATO turbina_gas;
+    DATO turbina_vapor;
+    DATO ciclo_combinado;
+    DATO hidroeolica;
+    DATO eolica;
+    DATO solar_fotovoltaica;
+    DATO solar_termica;
+    DATO otras_renovables;
+    DATO cogeneracion;
+    DATO residuos_no_renovables;
+    DATO residuos_renovables;
+    DATO generacion_total;
 
 }DATOS_GEN;
 
-int elegir_fichero(FILE *P)
+int elegir_fichero(void)
 {
     int fichero;
 
@@ -54,68 +67,24 @@ int elegir_fichero(FILE *P)
         printf("\n");
     }while((fichero!=1)&&(fichero!=2)&&(fichero!=3)&&(fichero!=4));
 
-
-    if(fichero==1)
-    {
-        P = fopen("generacion2122.txt","r");
-        if (P == NULL)
-            {
-                printf("Error al abrir el fichero.\n");
-                fichero = -1;
-            }
-        else
-            {
-                fichero =  1;
-            }
-    }
-    if(fichero==2)
-    {
-        P = fopen("generacion2122.csv","r");
-        if (P == NULL)
-            {
-                printf("Error al abrir el fichero.\n");
-                fichero = -1;
-            }
-        else
-            {
-                fichero = 2;
-            }
-    }
-    if(fichero==3)
-    {
-        P = fopen("generacion2122.csv","r");
-        if (P == NULL)
-            {
-                printf("Error al abrir el fichero.\n");
-                fichero = -1;
-            }
-        else
-            {
-                fichero = 3;
-            }
-    }
-    if(fichero==4)
-    {
-        P = fopen("generacion2122.csv","r");
-        if (P == NULL)
-            {
-                printf("Error al abrir el fichero.\n");
-                fichero = -1;
-            }
-        else
-            {
-                fichero = 4;
-            }
-    }
-
     return fichero;
 }
 
 void estadistica(void)
 {
     FILE *P;
-    int opcion = elegir_fichero(P),i=0;
-    DATOS_GEN datos;
+    int opcion = elegir_fichero();
+    int columnas=23;
+    int i=0;
+    DATOS_GEN datos_gen;
+    int nLINEAS=0;
+    int nCOLUMNAS=0;
+    char c;
+
+    datos_gen.principio.titulo[100] = "ESTRCUTURA DE LA GENERACION POR TECNOLOGIAS";
+    datos_gen.principio.sistema[100] = "NACIONAL";
+    datos_gen.principio.magnitudes[100] = "GWh";
+    datos_gen.principio.titulo[100] = "\n\n";
 
     if(opcion==-1)
     {
@@ -125,37 +94,46 @@ void estadistica(void)
     {
         printf("TAL.\n\n");
 
+        P = fopen("generacion_por_tecnologias_21_22_puntos.csv","r");
 
-        while(fscanf(P,"%i/%i/%i %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f %f",
-                     &datos.fechas[i].day,&datos.fechas[i].month,&datos.fechas[i].year,
-                     &datos.hidraulica[i],&datos.turbinacion[i],&datos.nuclear[i],
-                     &datos.carbon[i],&datos.fuel_gas[i],&datos.mot_diesel[i],
-                     &datos.turbina_gas[i],&datos.turbina_vapor[i],&datos.ciclo_combinado[i],
-                     &datos.hidroeolica[i],&datos.eolica[i],&datos.solar_fotovoltaica[i],
-                     &datos.solar_termica[i],&datos.otras_renovables[i],&datos.cogeneracion[i],
-                     &datos.residuos_no_renovables[i],&datos.residuos_renovables[i],&datos.generacion_total[i])!=EOF)
+        while(fscanf(P,"%c",&c)!=EOF)
         {
-            i++;
+            if(c=='\n')
+            {
+                nLINEAS++;
+            }
         }
 
-        for(i=0;i<=100;i++)
+        while(fscanf(P,"%10[^,],",&c)!=EOF)
         {
-            printf(".");
-            printf("%c\t",datos.carbon[i]);
+            if(c=='\n')
+            {
+                nLINEAS++;
+            }
         }
+
+
+        printf("TIENE %i LINEAS\n\n",nLINEAS);
+        printf("TIENE %i COLUMNAS\n\n",nCOLUMNAS);
+
+
+
+        fclose(P);
+
+
 
     }
     if(opcion==2)
     {
-
+        P = fopen("generacion_por_tecnologias_21_22_puntos.csv","r");
     }
     if(opcion==3)
     {
-
+        P = fopen("generacion_por_tecnologias_21_22_puntos.csv","r");
     }
     if(opcion==4)
     {
-
+        P = fopen("generacion_por_tecnologias_21_22_puntos.csv","r");
     }
 }
 void extraer_datos(void)
