@@ -26,12 +26,11 @@ typedef struct
 {
 
     CABECERA principio;
-    DATO fechas;
+    FECHA fechas[23];
     DATO hidraulica;
     DATO turbinacion;
     DATO nuclear;
     DATO carbon;
-    DATO fuel_gas;
     DATO mot_diesel;
     DATO turbina_gas;
     DATO turbina_vapor;
@@ -81,10 +80,7 @@ void estadistica(void)
     int nCOLUMNAS=0;
     char c;
 
-    datos_gen.principio.titulo[100] = "ESTRCUTURA DE LA GENERACION POR TECNOLOGIAS";
-    datos_gen.principio.sistema[100] = "NACIONAL";
-    datos_gen.principio.magnitudes[100] = "GWh";
-    datos_gen.principio.titulo[100] = "\n\n";
+
 
     if(opcion==-1)
     {
@@ -94,29 +90,36 @@ void estadistica(void)
     {
         printf("TAL.\n\n");
 
-        P = fopen("generacion_por_tecnologias_21_22_puntos.csv","r");
+        datos_gen.principio.titulo[100] = "ESTRCUTURA DE LA GENERACION POR TECNOLOGIAS";
+        datos_gen.principio.sistema[100] = "NACIONAL";
+        datos_gen.principio.magnitudes[100] = "GWh";
+        datos_gen.principio.titulo[100] = "\n\n";
+
+
+        P = fopen("generacion_por_tecnologias_21_22_puntos.txt","r");
 
         while(fscanf(P,"%c",&c)!=EOF)
         {
-            if(c=='\n')
+            if(c==',')
             {
-                nLINEAS++;
+                break;
             }
+
         }
 
-        while(fscanf(P,"%10[^,],",&c)!=EOF)
+        for(i=0;i<=23;i++)
         {
-            if(c=='\n')
-            {
-                nLINEAS++;
-            }
+            fscanf(P,"%i/%i",&datos_gen.fechas[i].month,&datos_gen.fechas[i].year);
+            fscanf(P,"%c",&c);
+            printf("%i/%i\n",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
         }
-
-
-        printf("TIENE %i LINEAS\n\n",nLINEAS);
-        printf("TIENE %i COLUMNAS\n\n",nCOLUMNAS);
-
-
+        fscanf(P,"%[^,]s",datos_gen.hidraulica.nombre);
+        printf("%s \t",datos_gen.hidraulica.nombre);
+        for(i=0;i<=23;i++)
+        {
+            fscanf(P,",%f",&datos_gen.hidraulica.magnitud[i]);
+            printf("%f \t",datos_gen.hidraulica.magnitud[i]);
+        }
 
         fclose(P);
 
