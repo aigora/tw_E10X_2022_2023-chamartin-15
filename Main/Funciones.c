@@ -47,6 +47,25 @@ typedef struct
 
 }DATOS_GEN;
 
+int pantalla_fichero(void)
+{
+    int res;
+    printf("\n");
+    printf("QUIERE MOSTRARLO EN PANTALLA O GUARDARLO\n");
+    printf("EN UN BLOC DE NOTAS?\n\n");
+    printf("1 = PANTALLA.\n");
+    printf("2 = BLOC DE NOTAS.\n");
+    printf("\n");
+    do
+    {
+        printf("ELIJA UNA DE LAS OPCIONES:\n\n");
+        scanf("%i",&res);
+        printf("\n\n");
+    }while((res!=1)&&(res!=2));
+
+    return res;
+}
+
 int elegir_fichero(void)
 {
     int fichero;
@@ -335,7 +354,9 @@ void estadistica(void)
 
         fscanf(P,"%c",&c);
 
+        //GUARDAMOS LOS DATOS EN VECTORES COMUNES
 
+        ////////////////////////////////////
 
         //PREGUNTAMOS QUE SE DESEA HACER
 
@@ -344,19 +365,19 @@ void estadistica(void)
         if(opcion==1)
         {
             int respuesta;
+            int res;
+            int res2;
 
             respuesta = mostrar_datos();
 
             printf("\n\n");
 
-            switch(respuesta)
+
+
+            if(respuesta==1)
             {
-            case '1':
-                printf("Seleccione el tipo de tecnología:\n");
-
-
                 printf("\n");
-                printf("QUE DATOS QUIERE MOSTRAR?\n\n");
+                printf("COMO QUIERE MOSTRAR LOS DATOS?\n\n");
                 printf("1 = POR NOMBRE.\n");
                 printf("2 = POR FECHA.\n");
                 printf("3 = TODOS LOS DATOS.\n");
@@ -366,48 +387,689 @@ void estadistica(void)
                 do
                 {
                     printf("ELIJA UNA DE LAS OPCIONES:\n\n");
-                    scanf("%i",&respuesta);
-                    printf("\n");
-                }while((respuesta!=1)&&(respuesta!=2)&&(respuesta!=3)&&(respuesta!=4));
+                    scanf("%i",&res);
+                    printf("\n\n");
+                }while((res!=1)&&(res!=2)&&(res!=3)&&(res!=4));
 
-                break;
+                if(res == 1)
+                {
+                    res2 = pantalla_fichero();
+
+                    if(res2==1)
+                    {
+                        printf("Seleccione un tipo de tecnología:\n");
+
+                        printf("1 = Hidraulica.\n");
+                        printf("2 = Turbinacion.\n");
+                        printf("3 = Nuclear.\n");
+                        printf("4 = Carbon.\n");
+                        printf("5 = Motores Diesel.\n");
+                        printf("6 = Turbinas de Gas.\n");
+                        printf("7 = Turbinas de Vapor.\n");
+                        printf("8 = Ciclo Combinado.\n");
+                        printf("9 = Hidroeolica.\n");
+                        printf("10 = Eolica.\n");
+                        printf("11 = Solar Fotovoltaica.\n");
+                        printf("12 = Solar Termica.\n");
+                        printf("13 = Otras Renovables.\n");
+                        printf("14 = Cogeneracion.\n");
+                        printf("15 = Residuos no renovables.\n");
+                        printf("16 = Residuos renovables.\n");
+
+                        do
+                        {
+                            scanf("%i",&respuesta);
+                            printf("\n");
+                        }while((respuesta!=1)&&(respuesta!=2)&&(respuesta!=3)&&(respuesta!=4)&&
+                           (respuesta!=5)&&(respuesta!=6)&&(respuesta!=7)&&(respuesta!=8)&&
+                           (respuesta!=9)&&(respuesta!=10)&&(respuesta!=11)&&(respuesta!=12)&&
+                           (respuesta!=13)&&(respuesta!=14)&&(respuesta!=15)&&(respuesta!=16));
+
+                    //MOSTRAMOS DATOS HIDRÁULICA
+
+                    if(respuesta==1)
+                    {
+                        printf("\n");
+                        printf("MOSTRANDO DATOS:\n\n");
+
+                        printf("%s:",datos_gen.hidraulica.nombre);
+                        printf("\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("%f Gwh\n",datos_gen.hidraulica.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS TURBINACIÓN BOMBEO
+
+                    if(respuesta==2)
+                    {
+                        printf("\n");
+                        printf("MOSTRANDO DATOS:\n\n");
+
+                        printf("%s:",datos_gen.turbinacion.nombre);
+                        printf("\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("%f Gwh\n",datos_gen.turbinacion.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS NUCLEAR
+
+                    if(respuesta==3)
+                    {
+                        printf("\n");
+                        printf("MOSTRANDO DATOS:\n\n");
+
+                        printf("%s:",datos_gen.nuclear.nombre);
+                        printf("\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("%f Gwh\n",datos_gen.nuclear.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS CARBON
+
+                    if(respuesta==4)
+                    {
+                        printf("\n");
+                        printf("MOSTRANDO DATOS:\n\n");
+
+                        printf("%s:",datos_gen.carbon.nombre);
+                        printf("\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("%f Gwh\n",datos_gen.carbon.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS MOTORES DIESEL
+
+                    if(respuesta==5)
+                    {
+                        printf("\n");
+                        printf("MOSTRANDO DATOS:\n\n");
+
+                        printf("%s:",datos_gen.mot_diesel.nombre);
+                        printf("\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("%f Gwh\n",datos_gen.mot_diesel.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS TURBINA GAS
+
+                    if(respuesta==6)
+                    {
+                        printf("\n");
+                        printf("MOSTRANDO DATOS:\n\n");
+
+                        printf("%s:",datos_gen.turbina_gas.nombre);
+                        printf("\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("%f Gwh\n",datos_gen.turbina_gas.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS TURBINA VAPOR
+
+                    if(respuesta==7)
+                    {
+                        printf("\n");
+                        printf("MOSTRANDO DATOS:\n\n");
+
+                        printf("%s:",datos_gen.turbina_vapor.nombre);
+                        printf("\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("%f Gwh\n",datos_gen.turbina_vapor.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS CICLO COMBINADO
+
+                    if(respuesta==8)
+                    {
+                        printf("\n");
+                        printf("MOSTRANDO DATOS:\n\n");
+
+                        printf("%s:",datos_gen.ciclo_combinado.nombre);
+                        printf("\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("%f Gwh\n",datos_gen.ciclo_combinado.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS HIDROEOLICA
+
+                    if(respuesta==9)
+                    {
+                        printf("\n");
+                        printf("MOSTRANDO DATOS:\n\n");
+
+                        printf("%s:",datos_gen.hidroeolica.nombre);
+                        printf("\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("%f Gwh\n",datos_gen.hidroeolica.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS EOLICA
+
+                    if(respuesta==10)
+                    {
+                        printf("\n");
+                        printf("MOSTRANDO DATOS:\n\n");
+
+                        printf("%s:",datos_gen.eolica.nombre);
+                        printf("\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("%f Gwh\n",datos_gen.eolica.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS SOLAR FOTOVOLTAICA
+
+                    if(respuesta==11)
+                    {
+                        printf("\n");
+                        printf("MOSTRANDO DATOS:\n\n");
+
+                        printf("%s:",datos_gen.solar_fotovoltaica.nombre);
+                        printf("\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("%f Gwh\n",datos_gen.solar_fotovoltaica.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS SOLAR TERMICA
+
+                    if(respuesta==12)
+                    {
+                        printf("\n");
+                        printf("MOSTRANDO DATOS:\n\n");
+
+                        printf("%s:",datos_gen.solar_termica.nombre);
+                        printf("\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("%f Gwh\n",datos_gen.solar_termica.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS OTRAS RENOVABLES
+
+                    if(respuesta==13)
+                    {
+                        printf("\n");
+                        printf("MOSTRANDO DATOS:\n\n");
+
+                        printf("%s:",datos_gen.otras_renovables.nombre);
+                        printf("\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("%f Gwh\n",datos_gen.otras_renovables.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS COGENERACIÓN
+
+                    if(respuesta==14)
+                    {
+                        printf("\n");
+                        printf("MOSTRANDO DATOS:\n\n");
+
+                        printf("%s:",datos_gen.cogeneracion.nombre);
+                        printf("\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("%f Gwh\n",datos_gen.cogeneracion.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS RESIDUOS NO RENOVABLES
+
+                    if(respuesta==15)
+                    {
+                        printf("\n");
+                        printf("MOSTRANDO DATOS:\n\n");
+
+                        printf("%s:",datos_gen.residuos_no_renovables.nombre);
+                        printf("\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("%f Gwh\n",datos_gen.residuos_no_renovables.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS RESIDUOS RENOVABLES
+
+                    if(respuesta==16)
+                    {
+                        printf("\n");
+                        printf("MOSTRANDO DATOS:\n\n");
+
+                        printf("%s:",datos_gen.residuos_renovables.nombre);
+                        printf("\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("%f Gwh\n",datos_gen.residuos_renovables.magnitud[i]);
+
+                        }
+                    }
+                    }
+
+                    if(res2==2)
+                    {
+                        FILE *Q;
+
+                        Q=fopen("resultados.txt","w");
+
+                        printf("Seleccione un tipo de tecnología:\n");
+
+                        printf("1 = Hidraulica.\n");
+                        printf("2 = Turbinacion.\n");
+                        printf("3 = Nuclear.\n");
+                        printf("4 = Carbon.\n");
+                        printf("5 = Motores Diesel.\n");
+                        printf("6 = Turbinas de Gas.\n");
+                        printf("7 = Turbinas de Vapor.\n");
+                        printf("8 = Ciclo Combinado.\n");
+                        printf("9 = Hidroeolica.\n");
+                        printf("10 = Eolica.\n");
+                        printf("11 = Solar Fotovoltaica.\n");
+                        printf("12 = Solar Termica.\n");
+                        printf("13 = Otras Renovables.\n");
+                        printf("14 = Cogeneracion.\n");
+                        printf("15 = Residuos no renovables.\n");
+                        printf("16 = Residuos renovables.\n");
+
+                        do
+                        {
+                            scanf("%i",&respuesta);
+                            printf("\n");
+                        }while((respuesta!=1)&&(respuesta!=2)&&(respuesta!=3)&&(respuesta!=4)&&
+                           (respuesta!=5)&&(respuesta!=6)&&(respuesta!=7)&&(respuesta!=8)&&
+                           (respuesta!=9)&&(respuesta!=10)&&(respuesta!=11)&&(respuesta!=12)&&
+                           (respuesta!=13)&&(respuesta!=14)&&(respuesta!=15)&&(respuesta!=16));
+
+                    //MOSTRAMOS DATOS HIDRÁULICA
+
+                    if(respuesta==1)
+                    {
+                        fprintf(Q,"%s:",datos_gen.hidraulica.nombre);
+                        fprintf(Q,"\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"%f Gwh\n",datos_gen.hidraulica.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS TURBINACIÓN BOMBEO
+
+                    if(respuesta==2)
+                    {
+
+                        printf(Q,"%s:",datos_gen.turbinacion.nombre);
+                        printf(Q,"\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"%f Gwh\n",datos_gen.turbinacion.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS NUCLEAR
+
+                    if(respuesta==3)
+                    {
+
+                        fprintf(Q,"%s:",datos_gen.nuclear.nombre);
+                        fprintf(Q,"\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"%f Gwh\n",datos_gen.nuclear.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS CARBON
+
+                    if(respuesta==4)
+                    {
+
+                        fprintf(Q,"%s:",datos_gen.carbon.nombre);
+                        fprintf(Q,"\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"%f Gwh\n",datos_gen.carbon.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS MOTORES DIESEL
+
+                    if(respuesta==5)
+                    {
+
+                        fprintf(Q,"%s:",datos_gen.mot_diesel.nombre);
+                        fprintf(Q,"\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"%f Gwh\n",datos_gen.mot_diesel.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS TURBINA GAS
+
+                    if(respuesta==6)
+                    {
+
+
+                        fprintf(Q,"%s:",datos_gen.turbina_gas.nombre);
+                        fprintf(Q,"\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"%f Gwh\n",datos_gen.turbina_gas.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS TURBINA VAPOR
+
+                    if(respuesta==7)
+                    {
+
+                        fprintf(Q,"%s:",datos_gen.turbina_vapor.nombre);
+                        fprintf(Q,"\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"%f Gwh\n",datos_gen.turbina_vapor.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS CICLO COMBINADO
+
+                    if(respuesta==8)
+                    {
+
+                        fprintf(Q,"%s:",datos_gen.ciclo_combinado.nombre);
+                        fprintf(Q,"\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"%f Gwh\n",datos_gen.ciclo_combinado.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS HIDROEOLICA
+
+                    if(respuesta==9)
+                    {
+
+
+                        fprintf(Q,"%s:",datos_gen.hidroeolica.nombre);
+                        fprintf(Q,"\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"%f Gwh\n",datos_gen.hidroeolica.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS EOLICA
+
+                    if(respuesta==10)
+                    {
+
+
+                        fprintf(Q,"%s:",datos_gen.eolica.nombre);
+                        fprintf(Q,"\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"%f Gwh\n",datos_gen.eolica.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS SOLAR FOTOVOLTAICA
+
+                    if(respuesta==11)
+                    {
+
+                        fprintf(Q,"%s:",datos_gen.solar_fotovoltaica.nombre);
+                        fprintf(Q,"\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"%f Gwh\n",datos_gen.solar_fotovoltaica.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS SOLAR TERMICA
+
+                    if(respuesta==12)
+                    {
+
+                        fprintf(Q,"%s:",datos_gen.solar_termica.nombre);
+                        fprintf(Q,"\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"%f Gwh\n",datos_gen.solar_termica.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS OTRAS RENOVABLES
+
+                    if(respuesta==13)
+                    {
+
+                        fprintf(Q,"%s:",datos_gen.otras_renovables.nombre);
+                        fprintf(Q,"\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"%f Gwh\n",datos_gen.otras_renovables.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS COGENERACIÓN
+
+                    if(respuesta==14)
+                    {
+
+                        fprintf(Q,"%s:",datos_gen.cogeneracion.nombre);
+                        fprintf(Q,"\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"%f Gwh\n",datos_gen.cogeneracion.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS RESIDUOS NO RENOVABLES
+
+                    if(respuesta==15)
+                    {
+
+                        fprintf(Q,"%s:",datos_gen.residuos_no_renovables.nombre);
+                        fprintf(Q,"\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"%f Gwh\n",datos_gen.residuos_no_renovables.magnitud[i]);
+
+                        }
+                    }
+
+                    //MOSTRAMOS DATOS RESIDUOS RENOVABLES
+
+                    if(respuesta==16)
+                    {
+
+                       fprintf(Q,"%s:",datos_gen.residuos_renovables.nombre);
+                       fprintf(Q,"\n");
+
+                        for(i=0;i<23;i++)
+                        {
+                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"%f Gwh\n",datos_gen.residuos_renovables.magnitud[i]);
+
+                        }
+                    }
+
+                    printf("Los datos se han impreso en el bloc de notas\n");
+                    printf("llamado 'resultados' en la carpeta en el que se aloja este programa.\n\n");
+
+                    fclose(Q);
+
+                    }
+
+
+
+
+                }
+
+
+
+                }
+
+                if(res == 2)
+                {
+
+                }
             }
-        }
+            if(opcion==2)
+            {
 
-        if(opcion==2)
-        {
+            }
 
-        }
+            if(opcion==3)
+            {
 
-        if(opcion==3)
-        {
+            }
 
-        }
+            if(opcion==4)
+            {
 
-        if(opcion==4)
-        {
-
-        }
+            }
 
 
-        fclose(P);
+            fclose(P);
+
+
 
 
 
     }
-    if(opcion==2)
+
+     if(opcion==2)
     {
         P = fopen("generacion_por_tecnologias_21_22_puntos.csv","r");
     }
+
     if(opcion==3)
     {
         P = fopen("generacion_por_tecnologias_21_22_puntos.csv","r");
     }
+
     if(opcion==4)
     {
         P = fopen("generacion_por_tecnologias_21_22_puntos.csv","r");
     }
+
 }
+
+
+
 void extraer_datos(void)
 {
 
