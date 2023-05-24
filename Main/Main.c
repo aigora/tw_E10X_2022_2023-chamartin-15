@@ -7,8 +7,11 @@
 int main ()
 {
     int respuesta;
+    int volver;
 
-    printf("#####BIENVENID@####\n\n");
+    do
+    {
+        printf("#####BIENVENID@####\n\n");
     printf("Este programa consta de varias opciones de consulta\n");
     printf("y estadisticas sobre datos extraidos de la pagina web\n");
     printf("de la Red Electrica Española (REE).\n\n");
@@ -30,22 +33,24 @@ int main ()
     if(respuesta==1)
     {
         printf("Caso 1.");
-        estadistica();
+        volver = estadistica();
     }
     if(respuesta==2)
     {
         printf("Caso 2.");
-        extraer_datos();
+        volver = extraer_datos();
     }
     if(respuesta==3)
     {
         printf("Caso 3.");
-        consultar_datos();
+        volver = consultar_datos();
     }
     if(respuesta==4)
     {
         printf("Caso 4.");
     }
+
+    }while(volver!=0);
 
     return 0;
 }

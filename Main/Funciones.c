@@ -66,6 +66,8 @@ int pantalla_fichero(void)
     return res;
 }
 
+
+
 int elegir_fichero(void)
 {
     int fichero;
@@ -132,24 +134,47 @@ int mostrar_datos(void)
     return respuesta;
 }
 
-void estadistica(void)
+int volver_menu(void)
+{
+    int volver;
+    printf("\n");
+    printf("Desea volver al menú principal?\n");
+    printf("1 = Volver al menú principal.\n");
+    printf("2 = Salir del programa.\n");
+
+    do
+    {
+        printf("Seleccione una opción: ");
+        scanf("%i",&volver);
+        printf("\n");
+    }while((volver!=1)&&(volver!=2));
+
+    if(volver==1)
+    {
+        volver=1;
+    }
+    if(volver==2)
+    {
+        volver=0;
+    }
+
+    return volver;
+}
+
+int estadistica(void)
 {
     FILE *P;
     DATOS_GEN datos_gen;
     int opcion = elegir_fichero();
     int i=0;
     char c;
-
+    int volver=1;
 
     if(opcion==1)
     {
 
         P = fopen("generacion_por_tecnologias_21_22_puntos.txt","r");
 
-        datos_gen.principio.titulo[100] = "ESTRCUTURA DE LA GENERACION POR TECNOLOGIAS";
-        datos_gen.principio.sistema[100] = "NACIONAL";
-        datos_gen.principio.magnitudes[100] = "GWh";
-        datos_gen.principio.titulo[100] = "\n\n";
 
 
         while(fscanf(P,"%c",&c)!=EOF)
@@ -376,23 +401,6 @@ void estadistica(void)
 
             if(respuesta==1)
             {
-                printf("\n");
-                printf("COMO QUIERE MOSTRAR LOS DATOS?\n\n");
-                printf("1 = POR NOMBRE.\n");
-                printf("2 = POR FECHA.\n");
-                printf("3 = TODOS LOS DATOS.\n");
-                printf("4 = ??.\n");
-                printf("\n");
-
-                do
-                {
-                    printf("ELIJA UNA DE LAS OPCIONES:\n\n");
-                    scanf("%i",&res);
-                    printf("\n\n");
-                }while((res!=1)&&(res!=2)&&(res!=3)&&(res!=4));
-
-                if(res == 1)
-                {
                     res2 = pantalla_fichero();
 
                     if(res2==1)
@@ -437,7 +445,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             printf("%f Gwh\n",datos_gen.hidraulica.magnitud[i]);
 
                         }
@@ -455,7 +463,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             printf("%f Gwh\n",datos_gen.turbinacion.magnitud[i]);
 
                         }
@@ -473,7 +481,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             printf("%f Gwh\n",datos_gen.nuclear.magnitud[i]);
 
                         }
@@ -491,7 +499,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             printf("%f Gwh\n",datos_gen.carbon.magnitud[i]);
 
                         }
@@ -509,7 +517,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             printf("%f Gwh\n",datos_gen.mot_diesel.magnitud[i]);
 
                         }
@@ -527,7 +535,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             printf("%f Gwh\n",datos_gen.turbina_gas.magnitud[i]);
 
                         }
@@ -545,7 +553,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             printf("%f Gwh\n",datos_gen.turbina_vapor.magnitud[i]);
 
                         }
@@ -563,7 +571,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             printf("%f Gwh\n",datos_gen.ciclo_combinado.magnitud[i]);
 
                         }
@@ -581,7 +589,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             printf("%f Gwh\n",datos_gen.hidroeolica.magnitud[i]);
 
                         }
@@ -599,7 +607,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             printf("%f Gwh\n",datos_gen.eolica.magnitud[i]);
 
                         }
@@ -617,7 +625,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             printf("%f Gwh\n",datos_gen.solar_fotovoltaica.magnitud[i]);
 
                         }
@@ -635,7 +643,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             printf("%f Gwh\n",datos_gen.solar_termica.magnitud[i]);
 
                         }
@@ -653,7 +661,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             printf("%f Gwh\n",datos_gen.otras_renovables.magnitud[i]);
 
                         }
@@ -671,7 +679,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             printf("%f Gwh\n",datos_gen.cogeneracion.magnitud[i]);
 
                         }
@@ -689,7 +697,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             printf("%f Gwh\n",datos_gen.residuos_no_renovables.magnitud[i]);
 
                         }
@@ -707,7 +715,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            printf("%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             printf("%f Gwh\n",datos_gen.residuos_renovables.magnitud[i]);
 
                         }
@@ -757,7 +765,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             fprintf(Q,"%f Gwh\n",datos_gen.hidraulica.magnitud[i]);
 
                         }
@@ -773,7 +781,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             fprintf(Q,"%f Gwh\n",datos_gen.turbinacion.magnitud[i]);
 
                         }
@@ -789,7 +797,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             fprintf(Q,"%f Gwh\n",datos_gen.nuclear.magnitud[i]);
 
                         }
@@ -805,7 +813,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             fprintf(Q,"%f Gwh\n",datos_gen.carbon.magnitud[i]);
 
                         }
@@ -821,7 +829,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             fprintf(Q,"%f Gwh\n",datos_gen.mot_diesel.magnitud[i]);
 
                         }
@@ -838,7 +846,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             fprintf(Q,"%f Gwh\n",datos_gen.turbina_gas.magnitud[i]);
 
                         }
@@ -854,7 +862,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             fprintf(Q,"%f Gwh\n",datos_gen.turbina_vapor.magnitud[i]);
 
                         }
@@ -870,7 +878,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             fprintf(Q,"%f Gwh\n",datos_gen.ciclo_combinado.magnitud[i]);
 
                         }
@@ -887,7 +895,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             fprintf(Q,"%f Gwh\n",datos_gen.hidroeolica.magnitud[i]);
 
                         }
@@ -904,7 +912,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             fprintf(Q,"%f Gwh\n",datos_gen.eolica.magnitud[i]);
 
                         }
@@ -920,7 +928,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             fprintf(Q,"%f Gwh\n",datos_gen.solar_fotovoltaica.magnitud[i]);
 
                         }
@@ -936,7 +944,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             fprintf(Q,"%f Gwh\n",datos_gen.solar_termica.magnitud[i]);
 
                         }
@@ -952,7 +960,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             fprintf(Q,"%f Gwh\n",datos_gen.otras_renovables.magnitud[i]);
 
                         }
@@ -968,7 +976,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             fprintf(Q,"%f Gwh\n",datos_gen.cogeneracion.magnitud[i]);
 
                         }
@@ -984,7 +992,7 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             fprintf(Q,"%f Gwh\n",datos_gen.residuos_no_renovables.magnitud[i]);
 
                         }
@@ -1000,14 +1008,14 @@ void estadistica(void)
 
                         for(i=0;i<23;i++)
                         {
-                            fprintf(Q,"%i/%i ",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
+                            fprintf(Q,"FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
                             fprintf(Q,"%f Gwh\n",datos_gen.residuos_renovables.magnitud[i]);
 
                         }
                     }
 
                     printf("Los datos se han impreso en el bloc de notas\n");
-                    printf("llamado 'resultados' en la carpeta en el que se aloja este programa.\n\n");
+                    printf("llamado 'resultados' en la carpeta en la que se aloja este programa.\n\n");
 
                     fclose(Q);
 
@@ -1016,15 +1024,118 @@ void estadistica(void)
 
 
 
+
+
+
+
                 }
 
 
+                int month,year;
+                float magnitudes[16][24];
+                int j;
 
-                }
 
-                if(res == 2)
+
+                if(respuesta == 2)
                 {
+                    for(i=0;i<16;i++)
+                {
+                    for(j=0;j<24;j++)
+                    {
+                        if(i=0)
+                        {
+                            magnitudes[i][j] = datos_gen.hidraulica.magnitud[j];
 
+                        }
+                        if(i=1)
+                        {
+                            printf("tal");
+                            magnitudes[i][j] = datos_gen.turbinacion.magnitud[j];
+
+                        }
+                        if(i=2)
+                        {
+                            magnitudes[i][j] = datos_gen.nuclear.magnitud[j];
+
+                        }
+                        if(i=3)
+                        {
+                            magnitudes[i][j] = datos_gen.carbon.magnitud[j];
+
+                        }
+                        if(i=4)
+                        {
+                            magnitudes[i][j] = datos_gen.mot_diesel.magnitud[j];
+
+                        }
+                        if(i=5)
+                        {
+                            magnitudes[i][j] = datos_gen.turbina_gas.magnitud[j];
+
+                        }
+                        if(i=6)
+                        {
+                            magnitudes[i][j] = datos_gen.turbina_vapor.magnitud[j];
+
+                        }
+                        if(i=7)
+                        {
+                            magnitudes[i][j] = datos_gen.ciclo_combinado.magnitud[j];
+
+                        }
+                        if(i=8)
+                        {
+                            magnitudes[i][j] = datos_gen.hidroeolica.magnitud[j];
+
+                        }
+                        if(i=9)
+                        {
+                            magnitudes[i][j] = datos_gen.eolica.magnitud[j];
+
+                        }
+                        if(i=10)
+                        {
+                            magnitudes[i][j] = datos_gen.solar_fotovoltaica.magnitud[j];
+
+                        }
+                        if(i=11)
+                        {
+                            magnitudes[i][j] = datos_gen.solar_termica.magnitud[j];
+
+                        }
+                        if(i=12)
+                        {
+                            magnitudes[i][j] = datos_gen.otras_renovables.magnitud[j];
+
+                        }
+                        if(i=13)
+                        {
+                            magnitudes[i][j] = datos_gen.cogeneracion.magnitud[j];
+
+                        }
+                        if(i=14)
+                        {
+                            magnitudes[i][j] = datos_gen.residuos_no_renovables.magnitud[j];
+
+                        }
+                        if(i=15)
+                        {
+                            magnitudes[i][j] = datos_gen.residuos_renovables.magnitud[j];
+
+                        }
+                    }
+                }
+
+                for(i=0;i<15;i++)
+                {
+                    for(j=0;j<23;j++)
+                    {
+                        printf("%i ",magnitudes[i][j]);
+                    }
+
+                    printf("\n");
+                }
                 }
             }
             if(opcion==2)
@@ -1066,15 +1177,19 @@ void estadistica(void)
         P = fopen("generacion_por_tecnologias_21_22_puntos.csv","r");
     }
 
+    volver = volver_menu();
+
+    return volver;
+
 }
 
 
 
-void extraer_datos(void)
+int extraer_datos(void)
 {
 
 }
-void consultar_datos(void)
+int consultar_datos(void)
 {
 
 }
