@@ -73,11 +73,8 @@ int elegir_fichero(void)
     int fichero;
 
     printf("\n\n");
-    printf("Que desea hacer? Elija una de las siguientes opciones:\n\n");
+    printf("Documentos disponibles:\n\n");
     printf("1 = GENERACION POR TECNOLOGIAS (2021-2022).\n");
-    printf("2 = GENERACION POR TECNOLOGIAS (2021-2022).\n");
-    printf("3 = GENERACION POR TECNOLOGIAS (2021-2022).\n");
-    printf("4 = GENERACION POR TECNOLOGIAS (2021-2022).\n");
     printf("\n");
 
     do
@@ -85,7 +82,7 @@ int elegir_fichero(void)
         printf("Seleccione el documento (1,2...):\n\n");
         scanf("%i",&fichero);
         printf("\n");
-    }while((fichero!=1)&&(fichero!=2)&&(fichero!=3)&&(fichero!=4));
+    }while((fichero!=1));
 
     return fichero;
 }
@@ -97,9 +94,8 @@ int opciones_estadistica(void)
     printf("\n");
     printf("QUE DESEA HACER?:\n\n");
     printf("1 = MOSTRAR DATOS.\n");
-    printf("2 = MAXIMO / MÍNIMO / PROMEDIO DE GENERACION DE UNA TECNOLOGIA.\n");
+    printf("2 = MAXIMO / MINIMO / PROMEDIO DE GENERACION DE UNA TECNOLOGIA.\n");
     printf("3 = COMPARACION.\n");
-    printf("4 = ??.\n");
     printf("\n");
 
     do
@@ -107,7 +103,7 @@ int opciones_estadistica(void)
         printf("ELIJA UNA DE LAS OPCIONES:\n\n");
         scanf("%i",&respuesta);
         printf("\n");
-    }while((respuesta!=1)&&(respuesta!=2)&&(respuesta!=3)&&(respuesta!=4));
+    }while((respuesta!=1)&&(respuesta!=2)&&(respuesta!=3));
 
     return respuesta;
 }
@@ -136,13 +132,13 @@ int volver_menu(void)
 {
     int volver;
     printf("\n");
-    printf("Desea volver al menú principal?\n");
-    printf("1 = Volver al menú principal.\n");
+    printf("Desea volver al menu principal?\n");
+    printf("1 = Volver al menu principal.\n");
     printf("2 = Salir del programa.\n");
 
     do
     {
-        printf("Seleccione una opción: ");
+        printf("Seleccione una opcion: ");
         scanf("%i",&volver);
         printf("\n");
     }while((volver!=1)&&(volver!=2));
@@ -167,7 +163,7 @@ int estadistica(void)
     int i=0;
     char c;
     int volver=1;
-    int month,year,j,columna,fila;
+    int month,year,j,columna;
 
     float matriz[16][24]={{4057.346783,4517.602492,3715.416012,2745.019022,2159.483245,2182.252545,2209.4646239999997,1883.2608030000001,1396.698883,1023.215446,1199.445532,2536.803672,2085.857451,1174.9701699999998,1764.806206,1782.053848,1922.3023759999999,1190.985484,1043.519078,972.977692,1153.775681,717.70239,1309.281418,2744.808065},
                                     {320.53138900000005,401.29321899999997,330.794555,153.67968,238.708927,105.706304,115.895307,159.688964,118.198104,232.112394,202.80659899999998,269.908819,215.637741,285.079947,273.84815299999997,336.712619,299.880038,270.92393,216.61759400000003,339.372152,304.810326,385.661431,361.66386700000004,485.359059},
@@ -348,7 +344,7 @@ int estadistica(void)
 
         fscanf(P,"%c",&c);
 
-        //ALMACENAMOS DATOS COGENERACIÓN
+        //ALMACENAMOS DATOS COGENERACION
 
         fscanf(P,"%[^,]s",datos_gen.cogeneracion.nombre);
         for(i=0;i<24;i++)
@@ -381,7 +377,7 @@ int estadistica(void)
 
         fscanf(P,"%c",&c);
 
-        //ALMACENAMOS DATOS GENERACIÓN TOTAL
+        //ALMACENAMOS DATOS GENERACION TOTAL
 
         fscanf(P,"%[^,]s",datos_gen.generacion_total.nombre);
         for(i=0;i<24;i++)
@@ -392,6 +388,8 @@ int estadistica(void)
 
         fscanf(P,"%c",&c);
 
+        fclose (P);
+
     if(opcion==1)
     {
         //PREGUNTAMOS QUE SE DESEA HACER
@@ -401,7 +399,6 @@ int estadistica(void)
         if(opcion==1)
         {
             int respuesta;
-            int res;
             int res2;
 
             respuesta = mostrar_datos();
@@ -416,7 +413,7 @@ int estadistica(void)
 
                     if(res2==1)
                     {
-                        printf("Seleccione un tipo de tecnología:\n");
+                        printf("Seleccione un tipo de tecnologia:\n");
 
                         printf("1 = Hidraulica.\n");
                         printf("2 = Turbinacion.\n");
@@ -444,7 +441,7 @@ int estadistica(void)
                            (respuesta!=9)&&(respuesta!=10)&&(respuesta!=11)&&(respuesta!=12)&&
                            (respuesta!=13)&&(respuesta!=14)&&(respuesta!=15)&&(respuesta!=16));
 
-                    //MOSTRAMOS DATOS HIDRÁULICA
+                    //MOSTRAMOS DATOS HIDRAULICA
 
                     if(respuesta==1)
                     {
@@ -462,7 +459,7 @@ int estadistica(void)
                         }
                     }
 
-                    //MOSTRAMOS DATOS TURBINACIÓN BOMBEO
+                    //MOSTRAMOS DATOS TURBINACION BOMBEO
 
                     if(respuesta==2)
                     {
@@ -475,7 +472,7 @@ int estadistica(void)
                         for(i=0;i<23;i++)
                         {
                             printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
-                            printf("%f Gwh\n",datos_gen.turbinacion.magnitud[i]);
+                            printf("%.2f Gwh\n",datos_gen.turbinacion.magnitud[i]);
 
                         }
                     }
@@ -493,7 +490,7 @@ int estadistica(void)
                         for(i=0;i<23;i++)
                         {
                             printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
-                            printf("%f Gwh\n",datos_gen.nuclear.magnitud[i]);
+                            printf("%.2f Gwh\n",datos_gen.nuclear.magnitud[i]);
 
                         }
                     }
@@ -511,7 +508,7 @@ int estadistica(void)
                         for(i=0;i<23;i++)
                         {
                             printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
-                            printf("%f Gwh\n",datos_gen.carbon.magnitud[i]);
+                            printf("%.2f Gwh\n",datos_gen.carbon.magnitud[i]);
 
                         }
                     }
@@ -529,7 +526,7 @@ int estadistica(void)
                         for(i=0;i<23;i++)
                         {
                             printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
-                            printf("%f Gwh\n",datos_gen.mot_diesel.magnitud[i]);
+                            printf("%.2f Gwh\n",datos_gen.mot_diesel.magnitud[i]);
 
                         }
                     }
@@ -547,7 +544,7 @@ int estadistica(void)
                         for(i=0;i<23;i++)
                         {
                             printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
-                            printf("%f Gwh\n",datos_gen.turbina_gas.magnitud[i]);
+                            printf("%.2f Gwh\n",datos_gen.turbina_gas.magnitud[i]);
 
                         }
                     }
@@ -565,7 +562,7 @@ int estadistica(void)
                         for(i=0;i<23;i++)
                         {
                             printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
-                            printf("%f Gwh\n",datos_gen.turbina_vapor.magnitud[i]);
+                            printf("%.2f Gwh\n",datos_gen.turbina_vapor.magnitud[i]);
 
                         }
                     }
@@ -583,7 +580,7 @@ int estadistica(void)
                         for(i=0;i<23;i++)
                         {
                             printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
-                            printf("%f Gwh\n",datos_gen.ciclo_combinado.magnitud[i]);
+                            printf("%.2f Gwh\n",datos_gen.ciclo_combinado.magnitud[i]);
 
                         }
                     }
@@ -601,7 +598,7 @@ int estadistica(void)
                         for(i=0;i<23;i++)
                         {
                             printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
-                            printf("%f Gwh\n",datos_gen.hidroeolica.magnitud[i]);
+                            printf("%.2f Gwh\n",datos_gen.hidroeolica.magnitud[i]);
 
                         }
                     }
@@ -619,7 +616,7 @@ int estadistica(void)
                         for(i=0;i<23;i++)
                         {
                             printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
-                            printf("%f Gwh\n",datos_gen.eolica.magnitud[i]);
+                            printf("%.2f Gwh\n",datos_gen.eolica.magnitud[i]);
 
                         }
                     }
@@ -637,7 +634,7 @@ int estadistica(void)
                         for(i=0;i<23;i++)
                         {
                             printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
-                            printf("%f Gwh\n",datos_gen.solar_fotovoltaica.magnitud[i]);
+                            printf("%.2f Gwh\n",datos_gen.solar_fotovoltaica.magnitud[i]);
 
                         }
                     }
@@ -655,7 +652,7 @@ int estadistica(void)
                         for(i=0;i<23;i++)
                         {
                             printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
-                            printf("%f Gwh\n",datos_gen.solar_termica.magnitud[i]);
+                            printf("%.2f Gwh\n",datos_gen.solar_termica.magnitud[i]);
 
                         }
                     }
@@ -673,12 +670,12 @@ int estadistica(void)
                         for(i=0;i<23;i++)
                         {
                             printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
-                            printf("%f Gwh\n",datos_gen.otras_renovables.magnitud[i]);
+                            printf("%.2f Gwh\n",datos_gen.otras_renovables.magnitud[i]);
 
                         }
                     }
 
-                    //MOSTRAMOS DATOS COGENERACIÓN
+                    //MOSTRAMOS DATOS COGENERACION
 
                     if(respuesta==14)
                     {
@@ -691,7 +688,7 @@ int estadistica(void)
                         for(i=0;i<23;i++)
                         {
                             printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
-                            printf("%f Gwh\n",datos_gen.cogeneracion.magnitud[i]);
+                            printf("%.2f Gwh\n",datos_gen.cogeneracion.magnitud[i]);
 
                         }
                     }
@@ -709,7 +706,7 @@ int estadistica(void)
                         for(i=0;i<23;i++)
                         {
                             printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
-                            printf("%f Gwh\n",datos_gen.residuos_no_renovables.magnitud[i]);
+                            printf("%.2f Gwh\n",datos_gen.residuos_no_renovables.magnitud[i]);
 
                         }
                     }
@@ -727,7 +724,7 @@ int estadistica(void)
                         for(i=0;i<23;i++)
                         {
                             printf("FECHA: %i/%i\t",datos_gen.fechas[i].month,datos_gen.fechas[i].year);
-                            printf("%f Gwh\n",datos_gen.residuos_renovables.magnitud[i]);
+                            printf("%.2f Gwh\n",datos_gen.residuos_renovables.magnitud[i]);
 
                         }
                     }
@@ -739,7 +736,7 @@ int estadistica(void)
 
                         Q=fopen("resultados.txt","w");
 
-                        printf("Seleccione un tipo de tecnología:\n");
+                        printf("Seleccione un tipo de tecnologia:\n");
 
                         printf("1 = Hidraulica.\n");
                         printf("2 = Turbinacion.\n");
@@ -767,7 +764,7 @@ int estadistica(void)
                            (respuesta!=9)&&(respuesta!=10)&&(respuesta!=11)&&(respuesta!=12)&&
                            (respuesta!=13)&&(respuesta!=14)&&(respuesta!=15)&&(respuesta!=16));
 
-                    //MOSTRAMOS DATOS HIDRÁULICA
+                    //MOSTRAMOS DATOS HIDRAULICA
 
                     if(respuesta==1)
                     {
@@ -782,13 +779,13 @@ int estadistica(void)
                         }
                     }
 
-                    //MOSTRAMOS DATOS TURBINACIÓN BOMBEO
+                    //MOSTRAMOS DATOS TURBINACION BOMBEO
 
                     if(respuesta==2)
                     {
 
-                        printf(Q,"%s:",datos_gen.turbinacion.nombre);
-                        printf(Q,"\n");
+                        fprintf(Q,"%s:",datos_gen.turbinacion.nombre);
+                        fprintf(Q,"\n");
 
                         for(i=0;i<23;i++)
                         {
@@ -977,7 +974,7 @@ int estadistica(void)
                         }
                     }
 
-                    //MOSTRAMOS DATOS COGENERACIÓN
+                    //MOSTRAMOS DATOS COGENERACION
 
                     if(respuesta==14)
                     {
@@ -1032,21 +1029,11 @@ int estadistica(void)
 
                     }
 
-
-
-
-
-
-
-
                 }
 
 
-
-
-
-                if(respuesta == 2)
-                {
+            if(respuesta == 2)
+            {
                     do
                     {
                         printf("Introduce el mes (Ej:11):\t");
@@ -1137,7 +1124,7 @@ int estadistica(void)
                             printf("%s: ",datos_gen.residuos_renovables.nombre);
                         }
 
-                        printf("%f Gwh\n",matriz[i][columna]);
+                        printf("%.2f Gwh\n",matriz[i][columna]);
                     }
 
                 }
@@ -1146,50 +1133,171 @@ int estadistica(void)
     }
 
     int max_min_prom;
+    float max,min,prom,suma=0.0;
+    int elegir2,elegir3;
+    float generacion_total=0.0;
 
      if(opcion==2)
     {
-        printf("Que quiere calcular?\n\n");
-        printf("1 = Maximo\n");
-        printf("2 = Minimo\n");
-        printf("3 = Promedio\n");
 
-        do
+                printf("Seleccione un tipo de tecnologia:\n");
+
+                printf("1 = Hidraulica.\n");
+                printf("2 = Turbinacion.\n");
+                printf("3 = Nuclear.\n");
+                printf("4 = Carbon.\n");
+                printf("5 = Motores Diesel.\n");
+                printf("6 = Turbinas de Gas.\n");
+                printf("7 = Turbinas de Vapor.\n");
+                printf("8 = Ciclo Combinado.\n");
+                printf("9 = Hidroeolica.\n");
+                printf("10 = Eolica.\n");
+                printf("11 = Solar Fotovoltaica.\n");
+                printf("12 = Solar Termica.\n");
+                printf("13 = Otras Renovables.\n");
+                printf("14 = Cogeneracion.\n");
+                printf("15 = Residuos no renovables.\n");
+                printf("16 = Residuos renovables.\n");
+
+                do
+                {
+                    scanf("%i",&elegir2);
+                    printf("\n");
+                }while((elegir2!=1)&&(elegir2!=2)&&(elegir2!=3)&&(elegir2!=4)&&
+                    (elegir2!=5)&&(elegir2!=6)&&(elegir2!=7)&&(elegir2!=8)&&
+                    (elegir2!=9)&&(elegir2!=10)&&(elegir2!=11)&&(elegir2!=12)&&
+                    (elegir2!=13)&&(elegir2!=14)&&(elegir2!=15)&&(elegir2!=16));
+
+                max = matriz[elegir2-1][0];
+                min = matriz[elegir2-1][0];
+                j=0;
+                while(j<24)
+                {
+                    if(matriz[elegir2-1][j]>=max)
+                    {
+                        max=matriz[elegir2-1][j];
+                    }
+                    if(matriz[elegir2-1][j]<min)
+                    {
+                        min=matriz[elegir2-1][j];
+                    }
+                    suma=suma+matriz[elegir2-1][j];
+                    j++;
+                }
+
+
+                prom=suma/j;
+
+                    printf("Que quiere mostrar?\n\n");
+                    printf("1 = Maximo\n");
+                    printf("2 = Minimo\n");
+                    printf("3 = Promedio\n");
+                    printf("4 = Todo\n");
+
+                    do
+                    {
+                        printf("Seleccione una opcion:");
+                        scanf("%i",&max_min_prom);
+                        printf("\n");
+                    }while((max_min_prom!=1)&&(max_min_prom!=2)&&(max_min_prom!=3)&&(max_min_prom!=4));
+
+
+
+
+
+        if(max_min_prom == 1)
         {
-            printf("Seleccione una opcion:");
-            scanf("%i",&max_min_prom);
             printf("\n");
-        }while((max_min_prom!=1)&&(max_min_prom!=2)&&(max_min_prom!=3));
+            printf("El maximo de generacion por dicha tecnologia es %.2f GWh.\n",max);
+        }
 
+        if(max_min_prom == 2)
+        {
+            printf("\n");
+            printf("El minimo de generacion por dicha tecnologia es %.2f GWh.\n",min);
+        }
+
+        if(max_min_prom == 3)
+        {
+            printf("\n");
+            printf("El promedio de generacion por dicha tecnologia es %.2f GWh.\n",prom);
+        }
+
+        if(max_min_prom == 4)
+        {
+            printf("\n");
+            printf("El maximo de generacion por dicha tecnologia es %.2f GWh.\n",max);
+            printf("\n");
+            printf("El minimo de generacion por dicha tecnologia es %.2f GWh.\n",min);
+            printf("\n");
+            printf("El promedio de generacion por dicha tecnologia es %.2f GWh.\n",prom);
+        }
 
     }
+
+
 
     if(opcion==3)
     {
-        P = fopen("generacion_por_tecnologias_21_22_puntos.csv","r");
+        printf("Impacto de la generación con:\n\n");
+
+        printf("Seleccione un tipo de tecnologia:\n");
+
+                printf("1 = Hidraulica.\n");
+                printf("2 = Turbinacion.\n");
+                printf("3 = Nuclear.\n");
+                printf("4 = Carbon.\n");
+                printf("5 = Motores Diesel.\n");
+                printf("6 = Turbinas de Gas.\n");
+                printf("7 = Turbinas de Vapor.\n");
+                printf("8 = Ciclo Combinado.\n");
+                printf("9 = Hidroeolica.\n");
+                printf("10 = Eolica.\n");
+                printf("11 = Solar Fotovoltaica.\n");
+                printf("12 = Solar Termica.\n");
+                printf("13 = Otras Renovables.\n");
+                printf("14 = Cogeneracion.\n");
+                printf("15 = Residuos no renovables.\n");
+                printf("16 = Residuos renovables.\n");
+
+                do
+                {
+                    scanf("%i",&elegir3);
+                    printf("\n");
+                }while((elegir3!=1)&&(elegir3!=2)&&(elegir3!=3)&&(elegir3!=4)&&
+                    (elegir3!=5)&&(elegir3!=6)&&(elegir3!=7)&&(elegir3!=8)&&
+                    (elegir3!=9)&&(elegir3!=10)&&(elegir3!=11)&&(elegir3!=12)&&
+                    (elegir3!=13)&&(elegir3!=14)&&(elegir3!=15)&&(elegir3!=16));
+
+
+                j=0;
+                while(j<23)
+                {
+                    generacion_total=generacion_total+datos_gen.generacion_total.magnitud[j];
+                    j++;
+                }
+
+                j=0;
+                while(j<23)
+                {
+                    suma=suma+matriz[elegir3][j];
+                    j++;
+                }
+
+                printf("Dicha tecnologia ha generado un total de %.2f GWh en (2021-2022),\n",suma);
+                printf("lo que supone un %.2f %c de la generacion total en esa temporada.\n\n",(suma/generacion_total)*100,37);
+
+
     }
 
-    if(opcion==4)
-    {
-        P = fopen("generacion_por_tecnologias_21_22_puntos.csv","r");
-    }
-
-    fclose(P);
     volver = volver_menu();
+
+
+
+    }
 
     return volver;
 
-    }
-
 }
 
 
-
-int extraer_datos(void)
-{
-
-}
-int consultar_datos(void)
-{
-
-}

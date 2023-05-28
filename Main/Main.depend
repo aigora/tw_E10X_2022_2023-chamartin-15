@@ -1,11 +1,11 @@
 # depslib dependency file v1.0
-1685135757 source:c:\users\diferal\documents\github\tw_e10x_2022_2023-chamartin-15\main\main.c
+1685294240 source:c:\users\diferal\documents\github\tw_e10x_2022_2023-chamartin-15\main\main.c
 	<stdio.h>
 	"Funciones.h"
 	"Funciones.c"
 
-1684962416 c:\users\diferal\documents\github\tw_e10x_2022_2023-chamartin-15\main\funciones.h
+1685295811 c:\users\diferal\documents\github\tw_e10x_2022_2023-chamartin-15\main\funciones.h
 
-1685230392 c:\users\diferal\documents\github\tw_e10x_2022_2023-chamartin-15\main\funciones.c
+1685296213 c:\users\diferal\documents\github\tw_e10x_2022_2023-chamartin-15\main\funciones.c
 	"Funciones.h"
 
