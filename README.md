@@ -1,4 +1,4 @@
-# [GENERACIÓN POR TECNOLOGÍAS (2021 - 2022)]
+# GENERACIÓN POR TECNOLOGÍAS (2021 - 2022)
 
 Este programa contiene varias opciones de análisis de datos de generación por diferentes tecnologías, que se pueden mostrar bien en pantalla o en un fichero, además de hallar su máximo/mínimo/promedio y comparar entre sí.
 
