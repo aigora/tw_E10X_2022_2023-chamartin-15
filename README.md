@@ -1,6 +1,6 @@
-# [Título del trabajo]
+# [GENERACIÓN POR TECNOLOGÍAS (2021 - 2022)]
 
-[Descripción breve del proyecto a realizar (2-3 frases).]
+Este programa contiene varias opciones de análisis de datos de generación por diferentes tecnologías, que se pueden mostrar bien en pantalla o en un fichero, además de hallar su máximo/mínimo/promedio y comparar entre sí.
 
 ## Integrantes del equipo
 
@@ -8,4 +8,4 @@
 
 ## Objetivos del trabajo
 
-[Lista de los objetivos que se persiguen con el trabajo propuesto.]
+Utilizar y reforzar las habilidades adquiridas en las clases teóricas.
